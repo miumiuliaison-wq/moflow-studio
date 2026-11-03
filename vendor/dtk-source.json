@@ -1,0 +1,13 @@
+{
+  "repository": "https://github.com/Evil0ctal/Douyin_TikTok_Download_API",
+  "commit": "0661234421fb8e1df24f97eb30958671f7a2ee08",
+  "files": [
+    "src/dtk/signing/native/abogus.py",
+    "src/dtk/signing/native/sm3.py",
+    "src/dtk/signing/native/websign.py"
+  ],
+  "changes": [
+    "abogus.py: package import changed to relative import"
+  ],
+  "license": "Apache-2.0"
+}

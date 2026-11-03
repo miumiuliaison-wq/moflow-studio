@@ -1,0 +1,1686 @@
+[
+  {
+    "name": "douyin_auth_status",
+    "description": "检查当前账号登录状态",
+    "inputSchema": {
+      "properties": {},
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_account_list",
+    "description": "列出本地账号，不返回 Cookie",
+    "inputSchema": {
+      "properties": {},
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_parse_video",
+    "description": "解析作品链接或作品 ID",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "input": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "input"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_search_users",
+    "description": "搜索抖音用户",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "keyword": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "keyword"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_user",
+    "description": "获取用户资料",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "sec_uid": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "sec_uid"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_user_videos",
+    "description": "获取用户主页作品列表，count 默认 18、最大 100",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "type": "integer"
+        },
+        "cursor": {
+          "type": "integer"
+        },
+        "sec_uid": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "sec_uid"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_feed",
+    "description": "获取推荐作品，count 默认 10、最大 50",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "type": "integer"
+        },
+        "cursor": {
+          "type": "integer"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_liked",
+    "description": "获取点赞作品，count 默认 20、最大 50",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "type": "integer"
+        },
+        "cursor": {
+          "type": "integer"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_liked_authors",
+    "description": "获取点赞作品作者列表，count 默认 20、最大 100",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "type": "integer"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_collected",
+    "description": "获取收藏作品，count 默认 20、最大 50",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "type": "integer"
+        },
+        "cursor": {
+          "type": "integer"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_collected_mixes",
+    "description": "获取收藏合集列表，count 默认 20、最大 100",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "type": "integer"
+        },
+        "cursor": {
+          "type": "integer"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_mix_videos",
+    "description": "获取合集内作品列表，count 默认 20、最大 100，content_source 默认 series，可选 mix",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "content_source": {
+          "default": "series",
+          "enum": [
+            "mix",
+            "series"
+          ],
+          "type": "string"
+        },
+        "count": {
+          "type": "integer"
+        },
+        "cursor": {
+          "type": "integer"
+        },
+        "series_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "series_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_comments",
+    "description": "获取作品评论列表，count 默认 20、最大 100",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "aweme_id": {
+          "type": "string"
+        },
+        "count": {
+          "type": "integer"
+        },
+        "cursor": {
+          "type": "integer"
+        },
+        "insert_ids": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "aweme_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_comment_replies",
+    "description": "获取评论回复列表，count 默认 6、最大 50",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "aweme_id": {
+          "type": "string"
+        },
+        "comment_id": {
+          "type": "string"
+        },
+        "count": {
+          "type": "integer"
+        },
+        "cursor": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "aweme_id",
+        "comment_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_friends",
+    "description": "获取可私信或分享作品的好友，count 默认 50、最大 100",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "type": "integer"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_friend_status",
+    "description": "获取好友列表、资料和在线状态，offset 默认 0、limit 默认 20",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "conv_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "limit": {
+          "type": "integer"
+        },
+        "offset": {
+          "type": "integer"
+        },
+        "sec_user_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_messages",
+    "description": "获取私信历史",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "cursor": {
+          "type": "integer"
+        },
+        "to_user_id": {
+          "type": "string"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_unread",
+    "description": "汇总本地私信未读数，并可拉取最近通知未读数",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "notice_count": {
+          "type": "integer"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_notices",
+    "description": "获取通知列表，count 默认 10、最大 50，cursor 用上一批返回值",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "type": "integer"
+        },
+        "cursor": {
+          "type": "integer"
+        },
+        "min_time": {
+          "type": "integer"
+        },
+        "notice_group": {
+          "type": "integer"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_download_history",
+    "description": "列出本地下载历史/下载目录文件",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "force_refresh": {
+          "type": "boolean"
+        },
+        "limit": {
+          "type": "integer"
+        },
+        "media_type": {
+          "type": "string"
+        },
+        "offset": {
+          "type": "integer"
+        },
+        "query": {
+          "type": "string"
+        },
+        "sort_by": {
+          "type": "string"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_check_download_files",
+    "description": "检查下载目录内文件是否存在",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "paths": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "paths"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_download_tasks",
+    "description": "列出下载任务",
+    "inputSchema": {
+      "properties": {},
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_download_video",
+    "description": "解析并下载作品到本地（写操作）",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改账号或本地状态的操作",
+          "type": "boolean"
+        },
+        "input": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "input"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_download_liked",
+    "description": "批量下载点赞作品（写操作）",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改账号或本地状态的操作",
+          "type": "boolean"
+        },
+        "count": {
+          "type": "integer"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_download_collected",
+    "description": "批量下载收藏作品（写操作）",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改账号或本地状态的操作",
+          "type": "boolean"
+        },
+        "count": {
+          "type": "integer"
+        },
+        "cursor": {
+          "type": "integer"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_download_liked_authors",
+    "description": "批量下载点赞作品作者的作品（写操作）",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改账号或本地状态的操作",
+          "type": "boolean"
+        },
+        "count": {
+          "type": "integer"
+        },
+        "selected_sec_uids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_download_mix",
+    "description": "批量下载指定合集当前一页作品，content_source 默认 series，可选 mix（写操作）",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改账号或本地状态的操作",
+          "type": "boolean"
+        },
+        "content_source": {
+          "default": "series",
+          "enum": [
+            "mix",
+            "series"
+          ],
+          "type": "string"
+        },
+        "count": {
+          "type": "integer"
+        },
+        "cursor": {
+          "type": "integer"
+        },
+        "series_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "series_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_download_user",
+    "description": "下载指定用户主页的全部作品（写操作）",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "aweme_count": {
+          "type": "integer"
+        },
+        "confirm": {
+          "description": "确认执行会修改账号或本地状态的操作",
+          "type": "boolean"
+        },
+        "nickname": {
+          "type": "string"
+        },
+        "sec_uid": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "sec_uid"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_like_video",
+    "description": "点赞或取消点赞作品（账号写操作）",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "aweme_id": {
+          "type": "string"
+        },
+        "confirm": {
+          "description": "确认执行会修改账号或本地状态的操作",
+          "type": "boolean"
+        },
+        "liked": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "aweme_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_collect_video",
+    "description": "收藏或取消收藏作品（账号写操作）",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "aweme_id": {
+          "type": "string"
+        },
+        "collected": {
+          "type": "boolean"
+        },
+        "confirm": {
+          "description": "确认执行会修改账号或本地状态的操作",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "aweme_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_follow_user",
+    "description": "关注用户；兼容旧用法 follow=false 时取消关注（账号写操作）",
+    "inputSchema": {
+      "additionalProperties": false,
+      "anyOf": [
+        {
+          "required": [
+            "user_id"
+          ]
+        },
+        {
+          "required": [
+            "uid"
+          ]
+        }
+      ],
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改账号或本地状态的操作",
+          "type": "boolean"
+        },
+        "follow": {
+          "type": "boolean"
+        },
+        "uid": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "string"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_unfollow_user",
+    "description": "取消关注用户（账号写操作）",
+    "inputSchema": {
+      "additionalProperties": false,
+      "anyOf": [
+        {
+          "required": [
+            "user_id"
+          ]
+        },
+        {
+          "required": [
+            "uid"
+          ]
+        }
+      ],
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改账号或本地状态的操作",
+          "type": "boolean"
+        },
+        "uid": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "string"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_like_comment",
+    "description": "点赞或取消点赞评论（账号写操作）",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "aweme_id": {
+          "type": "string"
+        },
+        "comment_id": {
+          "type": "string"
+        },
+        "confirm": {
+          "description": "确认执行会修改账号或本地状态的操作",
+          "type": "boolean"
+        },
+        "level": {
+          "type": "integer"
+        },
+        "liked": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "aweme_id",
+        "comment_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_publish_comment",
+    "description": "发布作品评论或回复评论（暂不可用，评论发送已暂停）",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "aweme_id": {
+          "type": "string"
+        },
+        "confirm": {
+          "description": "确认执行会修改账号或本地状态的操作",
+          "type": "boolean"
+        },
+        "reply_id": {
+          "type": "string"
+        },
+        "reply_to_reply_id": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "aweme_id",
+        "text"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_send_message",
+    "description": "向指定用户发送文本私信（账号写操作）",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改账号或本地状态的操作",
+          "type": "boolean"
+        },
+        "content": {
+          "type": "string"
+        },
+        "to_user_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "to_user_id",
+        "content"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_send_image_message",
+    "description": "向指定用户发送图片私信，image_data_url 支持 data URL（账号写操作）",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改账号或本地状态的操作",
+          "type": "boolean"
+        },
+        "file_name": {
+          "type": "string"
+        },
+        "height": {
+          "type": "integer"
+        },
+        "image_data_url": {
+          "type": "string"
+        },
+        "mime_type": {
+          "type": "string"
+        },
+        "to_user_id": {
+          "type": "string"
+        },
+        "width": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "to_user_id",
+        "image_data_url"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_share_video",
+    "description": "向指定好友分享作品（账号写操作）",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改账号或本地状态的操作",
+          "type": "boolean"
+        },
+        "input": {
+          "type": "string"
+        },
+        "to_user_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "to_user_id",
+        "input"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_reply_notice",
+    "description": "回复通知关联的作品评论（暂不可用，评论发送已暂停）",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "aweme_id": {
+          "type": "string"
+        },
+        "confirm": {
+          "description": "确认执行会修改账号或本地状态的操作",
+          "type": "boolean"
+        },
+        "reply_id": {
+          "type": "string"
+        },
+        "reply_to_reply_id": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "aweme_id",
+        "text"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_pause_download",
+    "description": "暂停本地下载任务（写操作）",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改账号或本地状态的操作",
+          "type": "boolean"
+        },
+        "task_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_resume_download",
+    "description": "恢复本地下载任务（写操作）",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改账号或本地状态的操作",
+          "type": "boolean"
+        },
+        "task_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_cancel_download",
+    "description": "取消本地下载任务（写操作）",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改账号或本地状态的操作",
+          "type": "boolean"
+        },
+        "task_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_delete_download_files",
+    "description": "删除下载目录内文件（本地写操作）",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改账号或本地状态的操作",
+          "type": "boolean"
+        },
+        "paths": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "paths"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_current_user",
+    "description": "获取当前登录账号资料，不返回 Cookie",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {},
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_search_videos",
+    "description": "搜索作品，按返回的 cursor 分页，每次最多 32 条",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "default": 20,
+          "maximum": 32,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "keyword": {
+          "maxLength": 100,
+          "minLength": 1,
+          "type": "string"
+        },
+        "offset": {
+          "default": 0,
+          "maximum": 9223372036854775807,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "keyword"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_following",
+    "description": "获取当前账号关注列表，需要开启好友功能",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "default": 20,
+          "maximum": 100,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "offset": {
+          "default": 0,
+          "maximum": 9223372036854775807,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_collection_folders",
+    "description": "获取当前账号收藏夹列表，每次最多 50 条",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "default": 20,
+          "maximum": 50,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "cursor": {
+          "default": 0,
+          "maximum": 9223372036854775807,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_collection_folder_videos",
+    "description": "获取收藏夹内作品，每次最多 50 条；空收藏夹为正常结果",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "collects_id": {
+          "maxLength": 32,
+          "minLength": 1,
+          "pattern": "^[0-9]+$",
+          "type": "string"
+        },
+        "count": {
+          "default": 20,
+          "maximum": 50,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "cursor": {
+          "default": 0,
+          "maximum": 9223372036854775807,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "collects_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_user_series",
+    "description": "获取作者合集列表，content_source 区分 mix 与 series，默认 series",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "content_source": {
+          "default": "series",
+          "enum": [
+            "mix",
+            "series"
+          ],
+          "type": "string"
+        },
+        "count": {
+          "default": 20,
+          "maximum": 100,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "cursor": {
+          "default": 0,
+          "maximum": 9223372036854775807,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "sec_uid": {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "sec_uid"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_download_collection_folder",
+    "description": "下载收藏夹当前一页作品，最多 50 条；返回任务 ID 和下一页 cursor",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "collects_id": {
+          "maxLength": 32,
+          "minLength": 1,
+          "pattern": "^[0-9]+$",
+          "type": "string"
+        },
+        "confirm": {
+          "description": "确认执行会修改本地状态或调用已配置模型服务的操作",
+          "type": "boolean"
+        },
+        "count": {
+          "default": 20,
+          "maximum": 50,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "cursor": {
+          "default": 0,
+          "maximum": 9223372036854775807,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "collects_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_download_videos",
+    "description": "下载明确指定的作品 ID 列表，1–100 个；不接受任意媒体地址",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "aweme_ids": {
+          "items": {
+            "maxLength": 32,
+            "minLength": 1,
+            "pattern": "^[0-9]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "confirm": {
+          "description": "确认执行会修改本地状态或调用已配置模型服务的操作",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "aweme_ids"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_download_history",
+    "description": "读取持久化下载记录；与扫描目录文件的 douyin_download_history 不同",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "default": 50,
+          "maximum": 100,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "offset": {
+          "default": 0,
+          "maximum": 4294967295,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "query": {
+          "maxLength": 200,
+          "minLength": 0,
+          "type": "string"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_delete_download_history",
+    "description": "移除指定作品的下载记录；保留文件，之后可能再次下载该作品",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "aweme_id": {
+          "maxLength": 32,
+          "minLength": 1,
+          "pattern": "^[0-9]+$",
+          "type": "string"
+        },
+        "confirm": {
+          "description": "确认执行会修改本地状态或调用已配置模型服务的操作",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "aweme_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_clear_download_history",
+    "description": "清空全部下载记录；保留文件，之后可能再次下载已下载作品",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改本地状态或调用已配置模型服务的操作",
+          "type": "boolean"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_list_failed_downloads",
+    "description": "分页读取失败下载记录和错误原因",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "default": 50,
+          "maximum": 100,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "offset": {
+          "default": 0,
+          "maximum": 4294967295,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "query": {
+          "maxLength": 200,
+          "minLength": 0,
+          "type": "string"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_retry_failed_downloads",
+    "description": "重试明确指定的失败记录，1–100 个；空列表无效",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改本地状态或调用已配置模型服务的操作",
+          "type": "boolean"
+        },
+        "failure_ids": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "failure_ids"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_remove_failed_downloads",
+    "description": "移除明确指定的失败记录，保留已下载文件；空列表无效",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改本地状态或调用已配置模型服务的操作",
+          "type": "boolean"
+        },
+        "failure_ids": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "failure_ids"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_remove_download_task",
+    "description": "移除指定下载任务并取消执行，保留已下载文件",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改本地状态或调用已配置模型服务的操作",
+          "type": "boolean"
+        },
+        "task_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "task_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_download_settings",
+    "description": "读取下载偏好和当前下载目录，不返回账号或密钥配置",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {},
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_update_download_settings",
+    "description": "部分更新下载画质、并发、请求间隔、命名和媒体选项；目录在桌面设置中选择",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改本地状态或调用已配置模型服务的操作",
+          "type": "boolean"
+        },
+        "patch": {
+          "additionalProperties": false,
+          "minProperties": 1,
+          "properties": {
+            "auto_create_folder": {
+              "type": "boolean"
+            },
+            "auto_create_media_folder": {
+              "type": "boolean"
+            },
+            "batch_detail_allow_fallback": {
+              "type": "boolean"
+            },
+            "batch_detail_interval_ms": {
+              "default": 2000,
+              "maximum": 60000,
+              "minimum": 0,
+              "type": "integer"
+            },
+            "batch_download_highest_quality": {
+              "type": "boolean"
+            },
+            "batch_download_refresh_detail": {
+              "type": "boolean"
+            },
+            "batch_page_interval_ms": {
+              "default": 2000,
+              "maximum": 60000,
+              "minimum": 0,
+              "type": "integer"
+            },
+            "dedupe_user_downloads": {
+              "type": "boolean"
+            },
+            "download_allow_h265": {
+              "type": "boolean"
+            },
+            "download_cover": {
+              "type": "boolean"
+            },
+            "download_gallery_audio": {
+              "type": "boolean"
+            },
+            "download_live_photo_image": {
+              "type": "boolean"
+            },
+            "download_live_photo_video": {
+              "type": "boolean"
+            },
+            "download_quality": {
+              "default": "auto",
+              "enum": [
+                "auto",
+                "highest",
+                "h264",
+                "smallest",
+                "480p",
+                "720p",
+                "1080p",
+                "2k",
+                "1440p",
+                "4k",
+                "2160p"
+              ],
+              "type": "string"
+            },
+            "fetch_detail_for_batch_download": {
+              "type": "boolean"
+            },
+            "filename_template": {
+              "maxLength": 160,
+              "minLength": 1,
+              "type": "string"
+            },
+            "folder_name_template": {
+              "maxLength": 160,
+              "minLength": 1,
+              "type": "string"
+            },
+            "max_concurrent": {
+              "default": 3,
+              "maximum": 20,
+              "minimum": 1,
+              "type": "integer"
+            },
+            "remove_filename_special_chars": {
+              "type": "boolean"
+            },
+            "save_download_record": {
+              "type": "boolean"
+            },
+            "save_metadata": {
+              "type": "boolean"
+            }
+          },
+          "required": [],
+          "type": "object"
+        }
+      },
+      "required": [
+        "patch"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_creator_monitor",
+    "description": "读取作者监控配置、目标和运行状态",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {},
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_update_creator_monitor",
+    "description": "部分更新作者监控设置，保留目标与检测基线；启用后会定时下载新作品",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改本地状态或调用已配置模型服务的操作",
+          "type": "boolean"
+        },
+        "patch": {
+          "additionalProperties": false,
+          "minProperties": 1,
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "fetch_count": {
+              "default": 20,
+              "maximum": 50,
+              "minimum": 1,
+              "type": "integer"
+            },
+            "interval_minutes": {
+              "default": 60,
+              "maximum": 1440,
+              "minimum": 10,
+              "type": "integer"
+            },
+            "max_new_downloads_per_check": {
+              "default": 10,
+              "maximum": 50,
+              "minimum": 1,
+              "type": "integer"
+            },
+            "user_interval_seconds": {
+              "default": 10,
+              "maximum": 300,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [],
+          "type": "object"
+        }
+      },
+      "required": [
+        "patch"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_upsert_creator_monitor_target",
+    "description": "添加或更新一个监控作者，保留既有检测基线；目标最多 500 个",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "avatar_thumb": {
+          "maxLength": 2048,
+          "minLength": 0,
+          "type": "string"
+        },
+        "confirm": {
+          "description": "确认执行会修改本地状态或调用已配置模型服务的操作",
+          "type": "boolean"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "nickname": {
+          "maxLength": 200,
+          "minLength": 0,
+          "type": "string"
+        },
+        "sec_uid": {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "sec_uid"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_remove_creator_monitor_target",
+    "description": "移除一个监控作者，不删除下载文件",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改本地状态或调用已配置模型服务的操作",
+          "type": "boolean"
+        },
+        "sec_uid": {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "sec_uid"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_run_creator_monitor_now",
+    "description": "立即检测已启用的监控作者，首次建立基线，之后可触发新作品下载",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改本地状态或调用已配置模型服务的操作",
+          "type": "boolean"
+        }
+      },
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_im_connection_status",
+    "description": "读取私信连接状态；好友功能关闭时不建立连接",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {},
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_get_friend_chat_state",
+    "description": "读取当前账号本地会话摘要和未读计数，需要开启好友功能",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {},
+      "required": [],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_send_video_message",
+    "description": "向指定好友发送本地 MP4 原文件；视频最多 100 MiB、封面最多 5 MiB，仅允许下载目录或下载记录中的文件",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "confirm": {
+          "description": "确认执行会修改本地状态或调用已配置模型服务的操作",
+          "type": "boolean"
+        },
+        "cover_path": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "type": "string"
+        },
+        "to_user_id": {
+          "maxLength": 32,
+          "minLength": 1,
+          "pattern": "^[0-9]+$",
+          "type": "string"
+        },
+        "video_path": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "to_user_id",
+        "video_path",
+        "cover_path"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "name": "douyin_suggest_ai_interaction",
+    "description": "调用桌面已配置的模型生成回复建议；可能产生模型费用，仅生成建议，不执行互动",
+    "inputSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "author_name": {
+          "maxLength": 80,
+          "minLength": 0,
+          "type": "string"
+        },
+        "confirm": {
+          "description": "确认执行会修改本地状态或调用已配置模型服务的操作",
+          "type": "boolean"
+        },
+        "context": {
+          "maxLength": 12000,
+          "minLength": 0,
+          "type": "string"
+        },
+        "incoming_text": {
+          "maxLength": 12000,
+          "minLength": 0,
+          "type": "string"
+        },
+        "language": {
+          "maxLength": 32,
+          "minLength": 0,
+          "type": "string"
+        },
+        "max_suggestions": {
+          "default": 3,
+          "maximum": 3,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "target": {
+          "default": "comment",
+          "enum": [
+            "comment",
+            "private_message"
+          ],
+          "type": "string"
+        },
+        "tone": {
+          "default": "friendly",
+          "enum": [
+            "friendly",
+            "professional",
+            "warm",
+            "playful",
+            "concise"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "target"
+      ],
+      "type": "object"
+    }
+  }
+]

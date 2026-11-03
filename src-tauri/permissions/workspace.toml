@@ -1,0 +1,19 @@
+[[permission]]
+identifier = "workspace-files"
+description = "Choose a material directory and open validated material files or source URLs."
+commands.allow = ["choose_directory", "open_path", "reveal_file"]
+
+[[permission]]
+identifier = "runninghub-browser"
+description = "Display the user's RunningHub website inside the main Studio window."
+commands.allow = ["runninghub_open", "runninghub_bounds", "runninghub_action"]
+
+[[permission]]
+identifier = "runninghub-report"
+description = "Accept public favorite-app metadata from the dedicated RunningHub webview only."
+commands.allow = ["runninghub_report"]
+
+[[permission]]
+identifier = "runninghub-file-picker"
+description = "Open a user-confirmed media picker for an existing RunningHub file input; no arbitrary file read."
+commands.allow = ["runninghub_pick_file"]

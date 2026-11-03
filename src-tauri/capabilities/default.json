@@ -1,0 +1,1 @@
+{"identifier":"main","description":"Moflow local desktop window","webviews":["main"],"remote":{"urls":["http://127.0.0.1:7861/*"]},"permissions":["core:default","workspace-files","runninghub-browser"]}

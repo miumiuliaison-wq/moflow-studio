@@ -1,0 +1,1 @@
+{"identifier":"runninghub","description":"RunningHub may report favorite app metadata, with no local file or browser control privileges.","webviews":["runninghub-site"],"remote":{"urls":["https://www.runninghub.ai/*"]},"permissions":["runninghub-report","runninghub-file-picker"]}
